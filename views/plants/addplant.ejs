@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Herb - AyurHerb</title>
+  <link rel="stylesheet" href="/stylesheets/output.css">    
+</head>
+<body class="bg-green-50 flex items-center justify-center min-h-screen">
+
+  <form action="/plants/addplant" method="POST" enctype="multipart/form-data"
+    class="bg-white p-6 rounded-xl shadow-lg w-96 space-y-4">
+    
+    <h2 class="text-2xl font-bold text-green-700">🌱 Add a New Herb</h2>
+
+    <input type="text" name="name" placeholder="Plant Name" required
+      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+
+    <input type="text" name="type" placeholder="Type (Herb, Tree, Succulent...)"
+      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+
+    <textarea name="description" placeholder="Description"
+      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300"></textarea>
+
+    <input type="file" name="image" accept="image/*"
+      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+
+    <input type="text" name="sketchfabEmbedUrl" placeholder="Sketchfab Embed URL" required
+      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+
+    <div class="flex justify-between">
+      <a href="/plants" class="px-4 py-2 bg-gray-300 rounded-lg">Cancel</a>
+      <button type="submit"
+        class="px-4 py-2 bg-green-600 text-white rounded-lg">Add</button>
+    </div>
+  </form>
+
+</body>
+</html>

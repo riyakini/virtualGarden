@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayurherb</title>
+
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+     <!-- Header -->
+  <header>
+    <div class="logo">|</div>
+      <div class="log"> AyurHerb</div>
+
+    <nav>
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <a href="#"><i class="fas fa-camera"></i>Camera</a>
+      <a href="/plants"><i class="fas fa-seedling"></i> All Plants </a>
+      <a href="/health"><i class="fas fa-heart"></i> Health</a>
+      <a href="/detect"><i class="fas fa-leaf"></i> PlantDetection</a>
+    </nav>
+
+    <a href="/login" class="login-btn">Login</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Step Into Nature's </h1>
+      <h2>Pharmacy</h2>
+      <p>Your virtual herbal haven where ancient wisdom meets</p>
+      <p1>modern wellness. Explore the healing power of </p1>
+      <p1>medicinal plants.</p1>
+
+      <div class="feature-row">
+        <div class="feature-box">
+          <i class="fas fa-leaf"></i>
+          <h2>Curated Collection</h4>
+          <p>Carefully selected medicinal plants</p>
+        </div>
+        <div class="feature-box">
+          <i class="fas fa-heart"></i>
+          <h3>Traditional Wisdom</h4>
+          <p>Ancient AYUSH knowledge</p>
+        </div>
+        <div class="feature-box">
+          <i class="fas fa-shield-alt"></i>
+          <h4>Natural Wellness</h4>
+          <p1>Holistic health </p1>
+          <p1>Approach</p1>
+        </div>
+      </div>
+
+      <button class="get-started">Get Started</button>
+    </div>
+
+    <div class="hero-image">
+      <img src="images/nauralhealing.jpg" alt="Discover Natural Healing">
+    </div>
+  </section>
+
+  <!-- Trusted + Grid -->
+  <section class="trusted-section">
+    <div class="trusted-text">
+      <h3>Trusted by herbal enthusiasts worldwide</h3>
+      <p>✓ 1000+ Plants &nbsp; ✓ Expert Verified &nbsp; ✓ Free Access</p>
+    </div>
+    <div class="plant-grid"></div>
+  </section>
+
+  <!-- Traditional Healing Systems -->
+  <section class="healing-section">
+    <span class="badge">Traditional Healing Systems</span>
+    <h1>Discover the Power of </h1>
+    <h2>Natural Healing</h2>
+    <p class="healing-desc">
+      Explore a wide variety of time-honored practices designed to promote holistic wellness 
+      and rejuvenate your body and mind through ancient wisdom.
+    </p>
+
+    <div class="healing-grid">
+      <div class="healing-card ayurveda">
+        <i class="fas fa-leaf icon"></i>
+        <h3>Ayurveda</h3>
+        <p>Harness the power of ancient Ayurvedic remedies to restore balance and vitality in your life.</p>
+        <span class="cta">Find Your Balance</span>
+      </div>
+      <div class="healing-card yoga">
+        <i class="fas fa-child icon"></i>
+        <h3>Yoga & Naturopathy</h3>
+        <p>Embrace the union of body and mind through Yoga and natural therapies for a healthier you.</p>
+        <span class="cta">Connect Mind & Body</span>
+      </div>
+      <div class="healing-card unani">
+        <i class="fas fa-seedling icon"></i>
+        <h3>Unani</h3>
+        <p>Explore the time-tested Unani system that promotes holistic health with natural healing techniques.</p>
+        <span class="cta">Holistic Healing</span>
+      </div>
+      <div class="healing-card siddha">
+        <i class="fas fa-spa icon"></i>
+        <h3>Siddha</h3>
+        <p>Discover Siddha medicine, a traditional system that emphasizes balance and natural treatments.</p>
+        <span class="cta">Ancient Wisdom, Modern Health</span>
+      </div>
+      <div class="healing-card homeopathy">
+        <i class="fas fa-tint icon"></i>
+        <h3>Homeopathy</h3>
+        <p>Unlock the gentle power of Homeopathy to address ailments and improve overall well-being.</p>
+        <span class="cta">Gentle, Effective Care</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-about">
+        <h2>ayurherb</h2>
+        <p>Your virtual herbal haven where ancient wisdom meets modern wellness.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Health & Wellness</a></li>
+          <li><a href="#">Plantdetection</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Universal Colege of Engineerng</p><br>Kaman, Vasai 401208</p>
+        <p>Email: ayurherb@gmail.com</p>
+        <p>Phone: +91-XXXXXXXXXX</p>
+      </div>
+      <div class="footer-subscribe">
+        <h4>Stay Connected</h4>
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AyurHerb. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chat -->
+  <button class="chat-btn"><i class="fas fa-comment"></i></button>
+
+ 
+<script>
+/* Plant Data */
+const plants = [
+  { name: "Tulsi",       type: "Herb",      img: "images/tulsi.jpg",       link: "tulsi.html" },
+  { name: "Aloe Vera",   type: "Succulent", img: "images/aloevera.jpg",    link: "aloevera.html" },
+  { name: "Sage",        type: "Herb",      img: "images/sage1.jpg",       link: "sage.html" },
+  { name: "Ginger",      type: "Root",      img: "images/ginger.jpg",      link: "ginger.html" },
+  { name: "Neem",        type: "Medicinal", img: "images/neem.jpg",        link: "neem.html" },
+  { name: "Ashwagandha", type: "Adaptogen", img: "images/ashwagandha.jpg", link: "ashwagandha.html" },
+  { name: "Eucalyptus",  type: "Adaptogen", img: "images/eucalyptus.jpg",  link: "eucalyptus.html" },
+  { name: "Hibiscus",    type: "Adaptogen", img: "images/hibiscus.jpg",    link: "hibiscus.html" },
+  { name: "Rosemary",    type: "Medicinal", img: "images/rosemary.jpg",    link: "rosemary.html" },
+  { name: "Amla",        type: "Herb",      img: "images/amla.jpg",        link: "amla.html" },
+];
+
+/* Render Plant Grid */
+const grid = document.querySelector('.plant-grid');
+
+grid.innerHTML = plants.map(p => `
+  <a href="${p.link}" class="plant-card">
+    <img src="${p.img}" alt="${p.name}">
+    <h3>${p.name}</h3>
+    <p>${p.type}</p>
+  </a>
+`).join('');
+
+/* Simple scroll reveal */
+const revealOnScroll = () => {
+  document.querySelectorAll('.plant-card, .trusted-text, .healing-card').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      el.classList.add('visible');
+    }
+  });
+};
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+/* Chat Button */
+document.querySelector('.chat-btn').addEventListener('click', () => {
+  alert("Chat widget coming soon!");
+});
+  </script>
+</body>
+</html>

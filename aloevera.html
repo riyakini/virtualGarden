@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plant Information – Aloe Vera</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    .tab-active { border-bottom: 2px solid #10B981; color: #10B981; }
+
+    /* Fade for tab switching */
+    .fade { opacity: 0; transition: opacity 0.4s ease; }
+    .fade.show { opacity: 1; }
+
+    /* Sidebar cards animation */
+    .sidebar-card {
+      transform: scale(0.95);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    .sidebar-card.visible { transform: scale(1); opacity: 1; }
+    .sidebar-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .sidebar-card img {
+      transition: transform 0.4s ease;
+    }
+    .sidebar-card:hover img {
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">|</div>
+    <div class="log"> LifeHerb</div>
+
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="#"><i class="fas fa-camera"></i>Camera</a>
+      <a href="index1.html"><i class="fas fa-seedling"></i> All Plants </a>
+      <a href="health.html"><i class="fas fa-heart"></i> Health</a>
+      <a href="#"><i class="fas fa-leaf"></i> PlantDetection</a>
+    </nav>
+
+    <button class="login-btn">Login</button>
+  </header>
+
+  <!-- Main -->
+  <main class="flex flex-col lg:flex-row max-w-7xl mx-auto mt-6 space-y-6 lg:space-y-0 lg:space-x-6 px-4">
+
+    <!-- Left Content -->
+    <section class="flex-1 bg-white rounded-2xl shadow p-6">
+      <!-- Image -->
+      <div class="h-48 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden">
+        <img src="images/aloevera.jpg" alt="Aloevera"
+             class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+      </div>
+
+      <!-- Plant Info -->
+      <h1 class="text-3xl font-bold mt-4">Aloe Vera</h1>
+      <p class="text-gray-500 italic">Aloe barbadensis miller</p>
+      <p class="mt-2 text-gray-600">
+        Aloe Vera is a succulent plant widely appreciated for its soothing gel, which has been used
+        traditionally for skin care, minor burns, and digestive support…
+      </p>
+
+      <!-- Tabs -->
+      <div class="flex space-x-6 border-b mt-6">
+        <button class="tab-button py-2 font-medium tab-active" data-tab="overview">Overview</button>
+        <button class="tab-button py-2 font-medium" data-tab="medicinal">Medicinal Uses</button>
+        <button class="tab-button py-2 font-medium" data-tab="cultivation">Cultivation</button>
+        <button class="tab-button py-2 font-medium" data-tab="multimedia">Multimedia</button>
+        <button class="tab-button py-2 font-medium" data-tab="research">Research</button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="mt-4">
+        <div class="tab-content fade show" id="overview">
+          <h2 class="text-xl font-semibold mb-2">Basic Information</h2>
+          <div class="grid grid-cols-2 gap-4 text-gray-700">
+            <div>
+              <p><strong>Botanical Name:</strong> Aloe barbadensis miller</p>
+              <p><strong>Type:</strong> Succulent</p>
+              <p><strong>Habitat:</strong> Arid and semi-arid regions</p>
+              <p><strong>Family:</strong> Asphodelaceae</p>
+              <p><strong>Key Feature:</strong> Thick, fleshy leaves containing soothing gel</p>
+            </div>
+            <div>
+              <p><strong>Common Names:</strong> Aloe, Ghritkumari</p>
+              <p><strong>Region:</strong> Africa (native), now cultivated worldwide</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content fade hidden" id="medicinal">
+          <p>1. The gel is renowned for soothing minor burns, sunburn, and skin irritation.</p>
+          <p>2. Hydrates and moisturizes skin; supports wound healing.</p>
+          <p>3. Traditionally used as a mild laxative (inner latex), though with caution.</p>
+          <p>4. Contains antioxidants and anti-inflammatory compounds that may aid skin repair.</p>
+          <p>5. Used in cosmetic products for its cooling and softening properties.</p>
+        </div>
+
+        <div class="tab-content fade hidden" id="cultivation">
+          <p>
+            Aloe Vera thrives in warm, sunny locations and well-drained sandy soil. Water sparingly,
+            allowing the soil to dry between waterings to prevent root rot. Propagation is usually
+            done through offsets or “pups.” Protect plants from frost; container growing is ideal
+            for colder climates. Harvest mature outer leaves for gel after 8–12 months.
+          </p>
+        </div>
+
+        <div class="tab-content fade hidden" id="multimedia">
+          <p>Images, videos, and audio about Aloe Vera can go here.</p>
+        </div>
+
+        <div class="tab-content fade hidden" id="research">
+          <p>Scientific studies and articles about Aloe barbadensis miller.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-72 space-y-4">
+      <a href="ginger.html" class="sidebar-card block bg-white rounded shadow overflow-hidden">
+        <img src="images/ginger.jpg" alt="Ginger" class="w-full h-32 object-cover">
+        <div class="p-3">
+          <h3 class="font-semibold">Ginger</h3>
+          <p class="text-gray-500 text-sm">Rhizome</p>
+        </div>
+      </a>
+
+      <a href="tulsi.html" class="sidebar-card block bg-white rounded shadow overflow-hidden">
+        <img src="images/tulsi.jpg" alt="Tulsi" class="w-full h-32 object-cover">
+        <div class="p-3">
+          <h3 class="font-semibold">Tulsi</h3>
+          <p class="text-gray-500 text-sm">Herb</p>
+        </div>
+      </a>
+
+      <a href="eucalyptus.html" class="sidebar-card block bg-white rounded shadow overflow-hidden">
+        <img src="images/eucalyptus.jpg" alt="Eucalyptus" class="w-full h-32 object-cover">
+        <div class="p-3">
+          <h3 class="font-semibold">Eucalyptus</h3>
+          <p class="text-gray-500 text-sm">Tree</p>
+        </div>
+      </a>
+
+      <a href="aloevera.html" class="sidebar-card block bg-white rounded shadow overflow-hidden">
+        <img src="images/aloevera.jpg" alt="Aloe Vera" class="w-full h-32 object-cover">
+        <div class="p-3">
+          <h3 class="font-semibold">Aloe Vera</h3>
+          <p class="text-gray-500 text-sm">Succulent</p>
+        </div>
+      </a>
+    </aside>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    // Tabs
+    const buttons = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("tab-active"));
+        button.classList.add("tab-active");
+        contents.forEach(c => { c.classList.add("hidden"); c.classList.remove("show"); });
+        const active = document.getElementById(button.dataset.tab);
+        if (active) {
+          active.classList.remove("hidden");
+          setTimeout(() => active.classList.add("show"), 10);
+        }
+      });
+    });
+
+    // Sidebar entrance animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".sidebar-card");
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add("visible"), i * 120);
+      });
+    });
+  </script>
+</body>
+</html>

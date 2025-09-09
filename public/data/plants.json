@@ -1,0 +1,142 @@
+{
+  "Aloevera": {
+    "description": "Aloe Vera – succulent known for its healing, cooling, and skin-soothing properties.",
+    "uses": ["Wound healing","Skin moisturizer","Digestive aid"],
+    "sketchfab": "https://sketchfab.com/models/66c6699e50ab4863989777f920a981dd/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Amla": {
+    "description": "Amla (Indian Gooseberry) – a powerhouse of Vitamin C and antioxidants used in traditional medicine.",
+    "uses": ["Boosts immunity","Improves digestion","Hair & skin health"],
+    "sketchfab": "https://sketchfab.com/models/aed044866a00423798d5443de1344d21/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Amruthaballi": {
+    "description": "Amruthaballi (Giloy/Tinospora cordifolia) – revered in Ayurveda as an immune booster and antipyretic.",
+    "uses": ["Anti-inflammatory","Fever reducer","Immune booster"],
+    "sketchfab": ""
+  },
+  "Peepal": {
+    "description": "Peepal (Sacred Fig) – a sacred tree with traditional uses for respiratory and skin disorders.",
+    "uses": ["Respiratory health","Diabetes support","Skin disorders"],
+    "sketchfab": "https://sketchfab.com/models/a2d43c68161947aabea36dbbd6c5ea74/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Ashoka": {
+    "description": "Ashoka – used in Ayurveda for women’s reproductive health and as a uterine tonic.",
+    "uses": ["Menstrual health support","Pain relief","Skin tone improvement"],
+    "sketchfab": ""
+  },
+  "Ashwagandha": {
+    "description": "Ashwagandha – a potent adaptogen for stress relief, energy and sleep support.",
+    "uses": ["Stress relief","Energy booster","Sleep promoter"],
+    "sketchfab": ""
+  },
+  "Avacado": {
+    "description": "Avocado – nutrient-rich fruit high in healthy fats and vitamins.",
+    "uses": ["Heart health","Skin nourishment","Antioxidant support"],
+    "sketchfab": ""
+  },
+  "Bamboo": {
+    "description": "Bamboo – versatile plant with traditional uses and strong structural properties.",
+    "uses": ["Bone strength","Hair growth","Wound healing"],
+    "sketchfab": ""
+  },
+  "Brahmi": {
+    "description": "Brahmi – an Ayurvedic brain tonic used to enhance memory and calm the mind.",
+    "uses": ["Memory enhancer","Anxiety reducer","Improved focus"],
+    "sketchfab": ""
+  },
+  "Castor": {
+    "description": "Castor – plant known for castor oil, used traditionally for skin, hair and as a laxative.",
+    "uses": ["Laxative use","Skin infection relief","Hair growth"],
+    "sketchfab": ""
+  },
+  "Curry_Leaf": {
+    "description": "Curry Leaf – aromatic leaves used in cooking with digestive and anti-diabetic properties.",
+    "uses": ["Improves digestion","Manages diabetes","Promotes hair health"],
+    "sketchfab": "https://sketchfab.com/models/bb3c53f279764739bda1118097753b45/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Wood_sorel": {
+    "description": "Wood Sorrel (Oxalis) – wild plant used for mild diuretic and cooling effects.",
+    "uses": ["Fever reducer","Thirst quencher","Mild diuretic"],
+    "sketchfab": ""
+  },
+  "Tulasi": {
+    "description": "Tulasi (Holy Basil) – sacred herb used for immunity, respiratory support and stress relief.",
+    "uses": ["Immunity booster","Stress relief","Respiratory health"],
+    "sketchfab": "https://sketchfab.com/models/1c97b112900b4203bd30db4cf88447ce/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Chikoo": {
+    "description": "Chikoo (Sapodilla) – sweet fruit rich in fiber and nutrients.",
+    "uses": ["Energy booster","Digestive support","Bone strength"],
+    "sketchfab": ""
+  },
+  "Rose": {
+    "description": "Rose – ornamental and medicinal; used for skincare, mood and culinary applications.",
+    "uses": ["Skin glow","Mood lifting","Digestive aid"],
+    "sketchfab": "https://sketchfab.com/models/45f7486b81b74a9982b1ab8fb5bf269b/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Pepper": {
+    "description": "Black Pepper – spice with digestive, anti-inflammatory and cold-relief properties.",
+    "uses": ["Aids digestion","Cold relief","Boosts metabolism"],
+    "sketchfab": ""
+  },
+  "Neem": {
+    "description": "Neem – potent antibacterial and antifungal plant used for skin, oral and blood purification.",
+    "uses": ["Skin health","Blood purification","Oral hygiene"],
+    "sketchfab": "https://sketchfab.com/models/03edef8009d942d3a3db6fa64cecbe56/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Jasmine": {
+    "description": "Jasmine – fragrant flowering plant used in teas, aromatherapy and for mood support.",
+    "uses": ["Stress relief","Improves mood","Skin care"],
+    "sketchfab": "https://sketchfab.com/models/bffeafbadcdd43359aba1e1ba94217e4/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Hibiscus": {
+    "description": "Hibiscus – flowers used in hair care, teas and traditional medicine.",
+    "uses": ["Hair growth","Lowers blood pressure","Rich in antioxidants"],
+    "sketchfab": "https://sketchfab.com/models/345bc5348efb4b32918672fe8e119202/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Lemon": {
+    "description": "Lemon tree – citrus tree prized for fruit and traditional remedies from leaves and bark.",
+    "uses": ["Produces edible lemons","Aids digestion","Folk remedies"],
+    "sketchfab": "https://sketchfab.com/models/7ddb656429914056a1f2870ed7792e6a/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Insulin": {
+    "description": "Insulin Plant (Costus igneus) – traditionally used to support blood-sugar management.",
+    "uses": ["Diabetes management","Metabolism support"],
+    "sketchfab": ""
+  },
+  "Henna": {
+    "description": "Henna – leaves used for natural dyeing of hair/skin and for cooling properties.",
+    "uses": ["Natural dye","Hair conditioning","Burn cooling"],
+    "sketchfab": ""
+  },
+  "Gauva": {
+    "description": "Guava – fruit rich in Vitamin C and fiber; useful for digestion and immunity.",
+    "uses": ["Boosts immunity","Improves digestion","Controls diabetes"],
+    "sketchfab": "https://sketchfab.com/models/15ba6fa86fd04ad78b4d96545d48e04a/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Mango": {
+    "description": "Mango tree/fruit – tropical tree known for its delicious fruits and cultural importance.",
+    "uses": ["Produces nutritious fruit","Shade and ornamental","Traditional remedies from leaves"],
+    "sketchfab": "https://sketchfab.com/models/6997814540f14929bf13cf3828b5dc90/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Mint": {
+    "description": "Mint – aromatic herb used for digestion, cooling and freshening breath.",
+    "uses": ["Aids digestion","Relieves headaches","Freshens breath"],
+    "sketchfab": "https://sketchfab.com/models/a46164af367d44a4a57966a4b78d6e41/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  },
+  "Pomegranate": {
+    "description": "Pomegranate – antioxidant-rich fruit used for heart health and inflammation control.",
+    "uses": ["Improves heart health","Boosts hemoglobin","Anti-inflammatory"],
+    "sketchfab": ""
+  },
+  "Betel_Nut": {
+    "description": "Betel nut (Areca nut) – traditionally used as stimulant and digestive aid in some cultures.",
+    "uses": ["Digestion improvement","Stimulant","Antimicrobial properties"],
+    "sketchfab": ""
+  },
+  "Pappaya": {
+    "description": "Papaya – tropical fruit with the digestive enzyme papain and many vitamins.",
+    "uses": ["Improves digestion","Boosts immunity","Promotes skin health"],
+    "sketchfab": "https://sketchfab.com/models/4c18819a1b2d4b34865f2cfaba02afe0/embed?autostart=1&preload=1&ui_hint=2&autospin=0.2"
+  }
+}

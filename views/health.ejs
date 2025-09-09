@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AyurHerb | Health</title>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-green-50 via-white to-green-100 text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">|</div>
+      <div class="log"> AyurHerb</div>
+
+    <nav>
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <a href="#"><i class="fas fa-camera"></i>Camera</a>
+      <a href="/plants"><i class="fas fa-seedling"></i> All Plants </a>
+      <a href="/health"><i class="fas fa-heart"></i> Health</a>
+      <a href="/detect"><i class="fas fa-leaf"></i> PlantDetection</a>
+    </nav>
+
+    <a href="/login" class="login-btn">Login</a>
+  </header>
+  <!-- Hero Section -->
+  <section class="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center">
+    <span class="px-4 py-2 bg-green-100 text-green-700 rounded-full font-semibold shadow-sm">
+      🌿 Health Advisor
+    </span>
+    <h2 class="text-4xl md:text-5xl font-bold mt-6 leading-tight">
+      Discover the Right <span class="text-green-600">Herbs</span> <br class="hidden md:block"/> for Your Wellness
+    </h2>
+    <p class="text-gray-600 mt-3 max-w-xl mx-auto">
+      Enter a symptom or condition and let AyurHerb guide you to natural remedies.
+    </p>
+
+    <!-- Search Box -->
+    <div class="mt-10 w-full max-w-2xl">
+      <form id="healthForm" class="flex items-center bg-white/90 backdrop-blur-lg shadow-lg rounded-full border border-gray-200 overflow-hidden">
+        <input 
+          id="symptomInput" 
+          type="text" 
+          placeholder="e.g., cough, headache, skin burn..." 
+          class="flex-grow px-5 py-3 focus:outline-none text-gray-700 placeholder-gray-400"
+          required
+        >
+        <button 
+          type="submit" 
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 font-medium transition"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+
+    <!-- Results -->
+    <div id="results" class="mt-12 w-full max-w-3xl mx-auto"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm text-gray-500 border-t mt-auto">
+    © <%= new Date().getFullYear() %> AyurHerb. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('healthForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const symptom = document.getElementById('symptomInput').value;
+      const resultsDiv = document.getElementById('results');
+
+      resultsDiv.innerHTML = `
+        <div class="flex justify-center items-center">
+          <p class="text-gray-500 animate-pulse">🌱 Analyzing symptoms...</p>
+        </div>`;
+
+      try {
+        const response = await fetch('/api/health', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ symptom })
+        });
+        const data = await response.json();
+
+        resultsDiv.innerHTML = `
+          <div class="bg-white/90 backdrop-blur-lg shadow-lg rounded-2xl p-8 text-left border border-gray-100">
+            <h3 class="text-2xl font-semibold text-green-700 mb-4">🌿 Suggested Herbs</h3>
+            <ul class="space-y-3">
+              ${data.herbs.map(h => `
+                <li class="p-4 rounded-lg bg-green-50 hover:bg-green-100 transition">
+                  <strong class="text-green-800">${h.name}</strong>  
+                  <p class="text-gray-600 text-sm mt-1">${h.benefit}</p>
+                </li>`).join('')}
+            </ul>
+          </div>`;
+      } catch (err) {
+        resultsDiv.innerHTML = `
+          <p class="text-red-500 font-medium">❌ Error fetching suggestions. Please try again.</p>`;
+      }
+    });
+  </script>
+
+</body>
+</html>

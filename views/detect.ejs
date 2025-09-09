@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Medicinal Plant Detector</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <header>
+    <div class="logo">|</div>
+      <div class="log"> AyurHerb</div>
+
+    <nav>
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <a href="#"><i class="fas fa-camera"></i>Camera</a>
+      <a href="/plants"><i class="fas fa-seedling"></i> All Plants </a>
+      <a href="/health"><i class="fas fa-heart"></i> Health</a>
+      <a href="/detect"><i class="fas fa-leaf"></i> PlantDetection</a>
+    </nav>
+
+    <a href="/logout" class="login-btn">Logout</a>
+  </header>
+<div class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen flex items-center justify-center p-6">
+ 
+  <div class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-green-600 to-emerald-500 p-6">
+      <h1 class="text-3xl font-bold text-white">🌿 Medicinal Plant Detector</h1>
+      <p class="text-green-100">Upload or drag & drop a plant image to identify</p>
+    </div>
+
+    <!-- Content -->
+    <div class="p-8 space-y-6">
+      
+      <!-- Drag & Drop Zone -->
+      <div id="dropZone" class="flex flex-col items-center justify-center border-2 border-dashed border-green-400 rounded-xl p-10 text-center cursor-pointer hover:bg-green-50 transition">
+        <input id="imageInput" type="file" accept="image/*" class="hidden" />
+        <svg class="w-16 h-16 text-green-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115 8h1a4 4 0 010 8h-1" />
+        </svg>
+        <p class="text-gray-600"><span class="font-semibold">Click to upload</span> or drag & drop an image</p>
+        <p class="text-sm text-gray-400">PNG, JPG up to 5MB</p>
+      </div>
+
+      <!-- Preview -->
+      <div class="hidden" id="previewWrapper">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2">📷 Preview</h2>
+        <img id="preview" class="w-full max-h-96 object-contain rounded-lg border shadow" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-3">
+        <button id="detectBtn" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow transition">
+          🔍 Detect Plant
+        </button>
+        <button id="clearBtn" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 rounded-lg shadow transition">
+          ❌ Clear
+        </button>
+        <div id="status" class="ml-auto self-center text-sm text-gray-500">Model: loading...</div>
+      </div>
+
+      <!-- Result Card -->
+      <div id="resultCard" class="hidden border rounded-xl p-6 shadow-lg bg-green-50">
+        <h2 id="plantName" class="text-2xl font-bold text-green-700"></h2>
+        <p id="plantConfidence" class="text-sm text-gray-600 mb-3"></p>
+        <p id="plantDesc" class="text-gray-700"></p>
+
+        <h3 class="mt-4 font-semibold text-green-800">🌱 Uses / Benefits</h3>
+        <ul id="plantUses" class="list-disc ml-6 text-gray-700"></ul>
+
+        <div id="sketchfabEmbed" class="mt-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+  <!-- Drag & Drop Script -->
+  <script>
+    const dropZone = document.getElementById("dropZone");
+    const fileInput = document.getElementById("imageInput");
+    const previewWrapper = document.getElementById("previewWrapper");
+    const preview = document.getElementById("preview");
+
+    dropZone.addEventListener("click", () => fileInput.click());
+
+    dropZone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropZone.classList.add("bg-green-100");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("bg-green-100");
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropZone.classList.remove("bg-green-100");
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        showPreview(file);
+      }
+    });
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        showPreview(file);
+      }
+    });
+
+    function showPreview(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        previewWrapper.classList.remove("hidden");
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+
+  <!-- Your detect.js -->
+  <script src="/javascripts/detect.js"></script>
+</div>
+</body>
+</html>
