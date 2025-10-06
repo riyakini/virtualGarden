@@ -6,22 +6,52 @@ const plantSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  botanicalName: {
+    type: String,
+    trim: true
+  },
+  commonNames: {
+    type: [String], // store as array (split from comma separated input)
+    default: []
+  },
   type: {
     type: String,
     default: "Herb"
+  },
+  habitat: {
+    type: String,
+    trim: true
+  },
+  family: {
+    type: String,
+    trim: true
+  },
+  region: {
+    type: String,
+    trim: true
+  },
+  culturalSignificance: {
+    type: String,
+    trim: true
   },
   description: {
     type: String,
     trim: true
   },
-  image: {
-    type: String, // store image filename or cloud URL
-    required: false
+  medicinal: {
+    type: [String],
+    default: []
+  },
+  cultivation: {
+    type: [String],
+    default: []
   },
   sketchfabEmbedUrl: {
-    type: String,
-    required: true
+    type: String
   },
-}, { timestamps: true });
+  image: {
+    type: String
+  }
+});
 
 module.exports = mongoose.model("Plant", plantSchema);

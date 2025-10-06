@@ -4,12 +4,15 @@ const cookieParser=require('cookie-parser');
 const path=require('path');
 const healthRoutes = require("./routes/health");
 const userModel = require("./models/user");
+
 const Plant = require("./models/plant");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const plantsRoutes = require("./routes/plant");
 require("dotenv").config();
+const ownersRoutes = require("./routes/ownersRoutes");
+
 
 app.use(cookieParser());
 app.use(express.json());
@@ -97,15 +100,43 @@ app.post("/login", async function (req, res) {
     }
   });
 });
+//
+function isAdmin(req, res, next) {
+  const token = req.cookies.token;
+  if (!token) return res.redirect("/owners/login");
 
-app.get('/plants',(req,res)=>{
-    res.render('plants/allplant');
+  try {
+    const data = jwt.verify(token, "secret");
+    if (data.role !== "admin") {
+      return res.status(403).send("Not authorized");
+    }
+    req.admin = data;
+    next();
+  } catch (err) {
+    res.redirect("/owners/login");
+  }
+}
+// Only admin can access plant creation page
+app.get("/plants/add", isAdmin, (req, res) => {
+  res.render("plants/addplant");
 });
-// Routes
-app.use("/plants", plantsRoutes);
-app.get('/addplant',(req,res)=>{
-    res.render('plants/addplant');
+
+// Only admin can create a plant
+app.post("/plants/create", isAdmin, async (req, res) => {
+  // Example - save plant in DB
+  // await Plant.create({ name: req.body.name, description: req.body.description });
+  res.send("Plant created successfully by Admin!");
 });
+
+const plantRoutes = require('./routes/plant');
+app.use('/', plantRoutes);  // or app.use('/plants', plantRoutes);
+
+
+
+app.use("/owners", ownersRoutes);
+
+
+// Health check route
 app.get('/health',isLoggedIn,(req,res)=>{
     res.render('health');
 });

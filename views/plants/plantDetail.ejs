@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    <%= plant.name %> – AyurHerb
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/stylesheets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <header>
+    <div class="logo">|</div>
+    <div class="log">AyurHerb</div>
+    <nav>
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <a href="#"><i class="fas fa-camera"></i> Camera</a>
+      <a href="/plants"><i class="fas fa-seedling"></i> All Plants</a>
+      <a href="/health"><i class="fas fa-heart"></i> Health</a>
+      <a href="/detect"><i class="fas fa-leaf"></i> PlantDetection</a>
+    </nav>
+    <button class="login-btn">Login</button>
+  </header>
+
+  <main class="flex flex-col lg:flex-row max-w-7xl mx-auto mt-6 space-y-6 lg:space-y-0 lg:space-x-6 px-4">
+
+    <!-- Left Content: Plant Info -->
+    <section class="flex-1 bg-white rounded-2xl shadow p-6">
+      <div class="h-48 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden">
+        <img src="<%= plant.image %>" alt="<%= plant.name %>"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+      </div>
+      <h1 class="text-3xl font-bold mt-4">
+        <%= plant.name %>
+      </h1>
+      <p class="text-gray-500 italic">
+        <%= plant.botanicalName %>
+      </p>
+      <p class="mt-2 text-gray-600">
+        <%= plant.description %>
+      </p>
+
+      <!-- Tabs -->
+      <div class="flex space-x-6 border-b mt-6">
+        <button class="tab-button py-2 font-medium tab-active" data-tab="overview">Overview</button>
+        <button class="tab-button py-2 font-medium" data-tab="medicinal">Medicinal Uses</button>
+        <button class="tab-button py-2 font-medium" data-tab="cultivation">Cultivation</button>
+        <button class="tab-button py-2 font-medium" data-tab="multimedia">Multimedia</button>
+      </div>
+
+      <div class="mt-4">
+        <div id="overview" class="tab-content fade show">
+          <h3 class="text-xl font-semibold mb-4">Basic Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+            <p><strong>Botanical Name:</strong>
+              <%= plant.botanicalName %>
+            </p>
+            <p><strong>Common Names:</strong>
+              <%= plant.commonNames.join(", ") %></p>
+    <p><strong>Type:</strong> <%= plant.type %></p>
+    <p><strong>Habitat:</strong> <%= plant.habitat %></p>
+    <p><strong>Family:</strong> <%= plant.family %></p>
+    <p><strong>Region:</strong> <%= plant.region %></p>
+  </div>
+  <p class=" mt-4"><strong>Cultural Significance:</strong>
+                <%= plant.culturalSignificance %>
+            </p>
+          </div>
+
+          <div id="medicinal" class="tab-content fade hidden">
+            <h3>Medicinal Uses</h3>
+            <ul>
+              <% plant.medicinal.forEach(use=> { %>
+                <li>
+                  <%= use %>
+                </li>
+                <% }) %>
+            </ul>
+          </div>
+          <div id="cultivation" class="tab-content fade hidden">
+            <p>
+              <%= plant.cultivation %>
+            </p>
+          </div>
+          <div id="multimedia" class="tab-content fade hidden">
+            <% if (plant.sketchfabEmbedUrl) { %>
+              <iframe src="<%= plant.sketchfabEmbedUrl %>" frameborder="0" allow="autoplay; fullscreen; vr"
+                style="width:100%; height:400px;"></iframe>
+              <% } else { %>
+                <p>No multimedia available.</p>
+                <% } %>
+          </div>
+        </div>
+    </section>
+
+    <!-- Sidebar: Recommended Plants -->
+    <aside class="w-full lg:w-72 space-y-4">
+      <% recommendedPlants.forEach(rec=> { %>
+        <% if (rec._id.toString() !==plant._id.toString()) { %>
+          <a href="/plants/<%= rec._id %>" class="sidebar-card block bg-white rounded shadow overflow-hidden shadow-md transform transition duration-300 hover:shadow-xl hover:-translate-y-2">
+            <img src="<%= rec.image %>" alt="<%= rec.name %>" class="w-full h-32 object-cover transition-transform duration-300 hover:scale-105">
+            <div class="p-3">
+              <h3 class="font-semibold">
+                <%= rec.name %>
+              </h3>
+              <p class="text-gray-500 text-sm">
+                <%= rec.type %>
+              </p>
+            </div>
+          </a>
+          <% } %>
+            <% }) %>
+    </aside>
+  </main>
+
+  <script>
+    // Tabs functionality
+    const buttons = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("tab-active"));
+        button.classList.add("tab-active");
+        contents.forEach(c => { c.classList.add("hidden"); c.classList.remove("show"); });
+        const active = document.getElementById(button.dataset.tab);
+        if (active) { active.classList.remove("hidden"); setTimeout(() => active.classList.add("show"), 10); }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

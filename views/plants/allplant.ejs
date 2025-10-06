@@ -1,12 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Ayurherb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AurHerb</title>
   <link rel="stylesheet" href="/stylesheets/styles.css">
+  
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      width: 100%;        
+      margin-left: auto;
+      margin-right: auto;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #fafafa;
+      color: #333;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* padding: .8rem 2rem; */
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #2e7d32;
+    }
+    nav a {
+      /* margin: 0 .7rem; */
+      text-decoration: none;
+      color: #333;
+      font-size: .95rem;
+    }
+    nav a:hover { color: #2e7d32; }
+    .login-btn {
+      padding: .4rem 1rem;
+      background: #2e7d32;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 2rem;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .toolbar input[type="search"] {
+      flex: 1;
+      max-width: 700px;
+      padding: .6rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      font-size: 1rem;
+      transition: box-shadow .2s;
+    }
+    .toolbar input[type="search"]:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #4caf50;
+    }
+    .toggle-buttons {
+      display: flex;
+      gap: .5rem;
+    }
+    .toggle-buttons button {
+      padding: .5rem 1rem;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+      font-size: .9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .toggle-buttons .active {
+      background: #4caf50;
+      color: #fff;
+      border-color: #4caf50;
+    }
+    .add-btn {
+      padding: .5rem 1.2rem;
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: .95rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background .2s;
+    }
+    .add-btn:hover { background: #1b5e20; }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+      padding: 2rem;
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      transition: transform .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 4px 14px rgba(0,0,0,.15);
+    }
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .card:hover img { transform: scale(1.05); }
+
+    .card-info {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: .7rem 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1));
+      color: #fff;
+    }
+    .card-info h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .card-info p {
+      margin: .2rem 0 0;
+      font-size: .85rem;
+      color: #e0e0e0;
+    }
+
+    .card-actions {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-actions span {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      font-size: 14px;
+      transition: background .2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,.25);
+      cursor: pointer;
+    }
+    .card-actions span:hover { background: #4caf50; color: #fff; }
+
+    /* Card link wrapper */
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -24,265 +196,42 @@
 
     <a href="/login" class="login-btn">Login</a>
   </header>
-<style>
-  body {
-    width: 90%;        
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #fafafa;
-    color: #333;
-  }
-  /* Toolbar */
-  .toolbar {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    padding: 1rem 2rem;
-    background: #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,.08);
-    flex-wrap: wrap;
-  }
-  .toolbar input[type="search"] {
-    flex: 1;
-    max-width: 700px;
-    padding: .6rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 1rem;
-    transition: box-shadow .2s;
-  }
-  .toolbar input[type="search"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #4caf50;
-  }
-  .toggle-buttons {
-    display: flex;
-    gap: .5rem;
-  }
-  .toggle-buttons button {
-    padding: .5rem 1rem;
-    border: 1px solid #ccc;
-    background: #f5f5f5;
-    font-size: .9rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background .2s, color .2s;
-  }
-  .toggle-buttons .active {
-    background: #4caf50;
-    color: #fff;
-    border-color: #4caf50;
-  }
-  .add-btn {
-    padding: .5rem 1.2rem;
-    background: #2e7d32;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: .95rem;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background .2s;
-    text-decoration: none;
-  }
-  .add-btn:hover { background: #1b5e20; }
 
-  /* Grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.2rem;
-    padding: 2rem;
-  }
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search plants...">
 
-  /* Card */
-  .card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
-    transition: transform .25s ease, box-shadow .25s ease;
-    cursor: pointer;
-  }
-  .card:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 4px 14px rgba(0,0,0,.15);
-  }
-  .card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    transition: transform .4s ease;
-  }
-  .card:hover img { transform: scale(1.05); }
-
-  .card-info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: .7rem 1rem;
-    background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1));
-    color: #fff;
-  }
-  .card-info h3 {
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 600;
-  }
-  .card-info p {
-    margin: .2rem 0 0;
-    font-size: .85rem;
-    color: #e0e0e0;
-  }
-
-  .card-actions {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .card-actions span {
-    width: 28px;
-    height: 28px;
-    display: grid;
-    place-items: center;
-    background: rgba(255,255,255,0.9);
-    border-radius: 50%;
-    font-size: 14px;
-    transition: background .2s;
-    box-shadow: 0 1px 3px rgba(0,0,0,.25);
-    cursor: pointer;
-  }
-  .card-actions span:hover { background: #4caf50; color: #fff; }
-</style>
-</head>
-<body>
-
-<!-- Toolbar -->
-<div class="toolbar">
-  <input id="search" type="search" placeholder="Search plants...">
-  <div class="toggle-buttons">
-    <button class="active">Authentic Herbs</button>
-    <button>Public Herbs</button>
-  </div>
-  <a href="/addplant" class="add-btn">+ Add Herb</a>
-</div>
-
-<!-- Grid -->
-<div class="grid">
-  <div class="card" data-name="chamomile">
-    <img src="images/chamomile.jpg" alt="chamomile">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>chamomile</h3><p>Herb</p></div>
-  </div>
- <div class="card" data-name="turmeric">
-    <img src="images/turmeric.jpg" alt="turmeric">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>turmeric</h3><p>Flowering Plant</p></div>
-  </div>
-  <div class="card" data-name="echinacea">
-    <img src="images/echinacea.jpg" alt="echinacea">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>echinacea</h3><p>Succulent</p></div>
   </div>
 
-  <div class="card" data-name="lavender">
-    <img src="images/lavender.jpg" alt="lavender">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>lavender</h3><p>Tree</p></div>
+  <!-- Grid -->
+  <div class="grid">
+    <% plants.forEach(plant => { %>
+      <a href="/plants/<%= plant._id %>" class="card-link">
+        <div class="card" data-name="<%= plant.name %>">
+          <img src="<%= plant.image %>" alt="<%= plant.name %>">
+          <div class="card-actions">
+            <span title="Bookmark">🔖</span>
+            <span title="Link">🔗</span>
+          </div>
+          <div class="card-info">
+            <h3><%= plant.name %></h3>
+            <p><%= plant.type %></p>
+          </div>
+        </div>
+      </a>
+    <% }) %>
   </div>
 
-  <div class="card" data-name="ocimumtenuiflorum">
-    <img src="images/ocimumtenuiflorum.jpg" alt="ocimumtenuiflorum">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>ocimumtenuiflorum</h3><p>Herb</p></div>
-  </div>
-
-  <div class="card" data-name="shatavari">
-    <img src="images/shatavari.jpg" alt="shatavari">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>shatavari</h3><p>Herb</p></div>
-  </div>
-     <div class="card" data-name="valerian">
-    <img src="images/valerian.jpg" alt="valerian">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>valerian</h3><p>Plant</p></div>
-  </div>
-
-  <div class="card" data-name="tulsi">
-    <img src="images/tulsi.jpg" alt="tulsi">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>tulsi</h3><p>Plant</p></div>
-  </div>
-
-  <div class="card" data-name="neem">
-    <img src="images/neem.jpg" alt="neem">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>neem</h3><p>Herb</p></div>
-  </div>
-
-  <div class="card" data-name="aloevera">
-    <img src="images/aloevera.jpg" alt="aloevera">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><a href="aloevera.ejs">aloevera</a><p>Herb</p></div>
-  </div>
-
-  <div class="card" data-name="hibiscus">
-    <img src="images/hibiscus.jpg" alt="hibiscus">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>hibiscus</h3><p>Flowering Plant</p></div>
-  </div>
-       <div class="card" data-name="amla">
-    <img src="images/amla.jpg" alt="amla">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>amla</h3><p>Succulent</p></div>
-  </div>
-  <div class="card" data-name="peppermint">
-    <img src="images/peppermint.jpg" alt="peppermint">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>peppermint</h3><p>Plant</p></div>
-  </div>
- <div class="card" data-name="lemongrass">
-    <img src="images/lemongrass.jpg" alt="lemongrass">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>lemongrass</h3><p>Plant</p></div>
-  </div>
- <div class="card" data-name="abutionindicum">
-    <img src="images/abutionindicum.jpg" alt="abutionindicum">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>abutionindicum</h3><p>Shrub</p></div>
-  </div>
- <div class="card" data-name="guggul">
-    <img src="images/guggul.jpg" alt="guggul">
-    <div class="card-actions"><span>🔖</span><span>🔗</span></div>
-    <div class="card-info"><h3>guggul</h3><p>Spiny shrub and small tree</p></div>
-  </div>
-</div>
-
-
-<script>
-  // Simple live search
-  const searchInput = document.getElementById('search');
-  searchInput.addEventListener('input', () => {
-    const val = searchInput.value.toLowerCase();
-    document.querySelectorAll('.card').forEach(card => {
-      const match = card.dataset.name.toLowerCase().includes(val);
-      card.style.display = match ? 'block' : 'none';
+  <script>
+    // Simple live search
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', () => {
+      const val = searchInput.value.toLowerCase();
+      document.querySelectorAll('.card').forEach(card => {
+        const match = card.dataset.name.toLowerCase().includes(val);
+        card.parentElement.style.display = match ? 'block' : 'none';
+      });
     });
-  });
-
-  // Card click: navigate (placeholder)
-  document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('click', e=>{
-      if(!e.target.closest('.card-actions')) {
-        alert('Clicked ' + card.dataset.name);
-      }
-    });
-  });
-</script>
+  </script>
 </body>
 </html>

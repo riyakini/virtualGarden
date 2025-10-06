@@ -2,36 +2,138 @@
 <html lang="en">
 <head>
   <title>Add Herb - AyurHerb</title>
-  <link rel="stylesheet" href="/stylesheets/output.css">    
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-green-50 flex items-center justify-center min-h-screen">
+<body class="bg-white text-gray-800 min-h-screen flex flex-col">
 
-  <form action="/plants/addplant" method="POST" enctype="multipart/form-data"
-    class="bg-white p-6 rounded-xl shadow-lg w-96 space-y-4">
-    
-    <h2 class="text-2xl font-bold text-green-700">🌱 Add a New Herb</h2>
+  <!-- Page Header -->
+  <header class="w-full px-8 py-6 border-b border-gray-200">
+    <h1 class="text-3xl font-bold text-green-700">🌱 Add a New Herb</h1>
+    <p class="text-gray-500">Fill in the details below to add a new plant to AyurHerb.</p>
+  </header>
 
-    <input type="text" name="name" placeholder="Plant Name" required
-      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+  <!-- Form Section -->
+  <main class="flex-1 w-full max-w-6xl mx-auto px-8 py-10">
+    <form action="/plants/addplant" method="POST" enctype="multipart/form-data" class="space-y-12">
 
-    <input type="text" name="type" placeholder="Type (Herb, Tree, Succulent...)"
-      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+      <!-- Basic Information -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-700 mb-6">Basic Information</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="text" name="name" placeholder="Plant Name" required
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
 
-    <textarea name="description" placeholder="Description"
-      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300"></textarea>
+          <input type="text" name="botanicalName" placeholder="Botanical Name" required
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
 
-    <input type="file" name="image" accept="image/*"
-      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+          <input type="text" name="commonNames" placeholder="Common Names (comma separated)"
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
 
-    <input type="text" name="sketchfabEmbedUrl" placeholder="Sketchfab Embed URL" required
-      class="w-full p-2 border rounded-lg focus:ring focus:ring-green-300">
+          <input type="text" name="type" placeholder="Type (Herb, Tree, Succulent...)"
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
 
-    <div class="flex justify-between">
-      <a href="/plants" class="px-4 py-2 bg-gray-300 rounded-lg">Cancel</a>
-      <button type="submit"
-        class="px-4 py-2 bg-green-600 text-white rounded-lg">Add</button>
-    </div>
-  </form>
+          <input type="text" name="habitat" placeholder="Habitat (e.g. Tropical, Subtropical)"
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
 
+          <input type="text" name="family" placeholder="Family (e.g. Lamiaceae)"
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
+
+          <input type="text" name="region" placeholder="Region (e.g. South Asia)"
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
+
+          <input type="text" name="sketchfabEmbedUrl" placeholder="Sketchfab Embed URL"
+            class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
+        </div>
+
+        <textarea name="culturalSignificance" placeholder="Cultural Significance"
+          class="w-full mt-6 border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none h-20"></textarea>
+      </section>
+
+      <!-- Description -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Description</h2>
+        <textarea name="description" placeholder="Write a short description..."
+          class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none h-28"></textarea>
+      </section>
+
+      <!-- Dynamic Medicinal Uses -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Medicinal Uses</h2>
+        <div id="medicinal-container" class="space-y-3">
+          <div class="flex gap-3">
+            <input type="text" name="medicinal" placeholder="Medicinal Use"
+              class="flex-1 border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
+            <button type="button" class="remove-btn text-red-500 hover:text-red-700">✖</button>
+          </div>
+        </div>
+        <button type="button" id="add-medicinal"
+          class="mt-3 text-green-600 font-medium hover:underline">➕ Add More</button>
+      </section>
+
+      <!-- Dynamic Cultivation Steps -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Cultivation Steps</h2>
+        <div id="cultivation-container" class="space-y-3">
+          <div class="flex gap-3">
+            <input type="text" name="cultivation" placeholder="Cultivation Step"
+              class="flex-1 border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
+            <button type="button" class="remove-btn text-red-500 hover:text-red-700">✖</button>
+          </div>
+        </div>
+        <button type="button" id="add-cultivation"
+          class="mt-3 text-green-600 font-medium hover:underline">➕ Add More</button>
+      </section>
+
+      <!-- Image Upload -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Upload Image</h2>
+        <input type="file" name="image" accept="image/*"
+          class="w-full border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none">
+      </section>
+
+      <!-- Action Buttons -->
+      <div class="flex justify-end gap-6 pt-6 border-t border-gray-200">
+        <a href="/plants" class="px-6 py-3 text-gray-600 hover:text-gray-900">Cancel</a>
+        <button type="submit" class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition">Save Plant</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Dynamic Fields Script -->
+  <script>
+    function createInputField(containerId, placeholder, name) {
+      const container = document.getElementById(containerId);
+      const div = document.createElement('div');
+      div.className = 'flex gap-3';
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = name;
+      input.placeholder = placeholder;
+      input.className = 'flex-1 border-b border-gray-300 focus:border-green-500 focus:ring-0 p-3 bg-transparent outline-none';
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'remove-btn text-red-500 hover:text-red-700';
+      removeBtn.textContent = '✖';
+      removeBtn.addEventListener('click', () => div.remove());
+
+      div.appendChild(input);
+      div.appendChild(removeBtn);
+      container.appendChild(div);
+    }
+
+    document.getElementById('add-medicinal').addEventListener('click', () => {
+      createInputField('medicinal-container', 'Medicinal Use', 'medicinal');
+    });
+
+    document.getElementById('add-cultivation').addEventListener('click', () => {
+      createInputField('cultivation-container', 'Cultivation Step', 'cultivation');
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', e => e.target.parentElement.remove());
+    });
+  </script>
 </body>
 </html>
