@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Herbal Garden Quiz</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e6f4ea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .quiz-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2d6a4f;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      background: #d8f3dc;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      font-size: 16px;
+      text-align: left;
+      color: #1b4332;
+    }
+
+    .option:hover {
+      background: #c2e9ca;
+      transform: scale(1.02);
+    }
+
+    button {
+      margin-top: 15px;
+      background: #40916c;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2d6a4f;
+    }
+
+    #score {
+      font-size: 20px;
+      color: #1b4332;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>🌿 Herbal Garden Quiz</h1>
+    <div id="quiz">
+      <div id="question" class="question"></div>
+      <div id="options"></div>
+      <button id="nextBtn" style="display:none;">Next</button>
+      <div id="score"></div>
+    </div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "Which part of the Tulsi plant is mainly used for medicinal purposes?",
+        options: ["Roots", "Leaves", "Flowers", "Seeds"],
+        answer: "Leaves"
+      },
+      {
+        question: "What is the scientific name of Ashwagandha?",
+        options: ["Ocimum sanctum", "Withania somnifera", "Mentha arvensis", "Aloe barbadensis"],
+        answer: "Withania somnifera"
+      },
+      {
+        question: "Which plant is known as Indian Ginseng?",
+        options: ["Ashwagandha", "Neem", "Turmeric", "Aloe Vera"],
+        answer: "Ashwagandha"
+      },
+      {
+        question: "Which spice is obtained from the bark of a tree?",
+        options: ["Clove", "Cinnamon", "Cardamom", "Pepper"],
+        answer: "Cinnamon"
+      },
+      {
+        question: "Which herb is famous for its calming aroma and is used to treat insomnia?",
+        options: ["Lavender", "Mint", "Basil", "Rosemary"],
+        answer: "Lavender"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const scoreEl = document.getElementById("score");
+
+    function loadQuestion() {
+      const current = quizData[currentQuestion];
+      questionEl.textContent = current.question;
+      optionsEl.innerHTML = "";
+      current.options.forEach(option => {
+        const button = document.createElement("button");
+        button.classList.add("option");
+        button.textContent = option;
+        button.onclick = () => checkAnswer(option, button);
+        optionsEl.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selected, btn) {
+      const correct = quizData[currentQuestion].answer;
+
+      // Disable all buttons
+      const allButtons = document.querySelectorAll(".option");
+      allButtons.forEach(b => b.disabled = true);
+
+      // Mark correct/incorrect
+      if (selected === correct) {
+        score++;
+        btn.style.background = "#95d5b2"; // green shade
+      } else {
+        btn.style.background = "#f8d7da"; // red shade
+        allButtons.forEach(b => {
+          if (b.textContent === correct) {
+            b.style.background = "#95d5b2";
+          }
+        });
+      }
+
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          showScore();
+        }
+      }, 1000);
+    }
+
+    function showScore() {
+      questionEl.textContent = "";
+      optionsEl.innerHTML = "";
+      scoreEl.textContent = `🎉 Your Score: ${score}/${quizData.length}`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

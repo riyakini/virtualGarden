@@ -35,9 +35,20 @@
         <img src="<%= plant.image %>" alt="<%= plant.name %>"
           class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
       </div>
-      <h1 class="text-3xl font-bold mt-4">
-        <%= plant.name %>
-      </h1>
+      <div class="flex items-center justify-between mt-4">
+    <h1 class="text-3xl font-bold">
+      <%= plant.name %>
+    </h1>
+
+    <!-- Learn More button linking to an external URL -->
+    <% if (plant.externalLink) { %>
+  <a href="<%= plant.externalLink %>" target="_blank"
+    class="text-sm bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow transition duration-300">
+    Learn More
+  </a>
+<% } %>
+
+  </div>
       <p class="text-gray-500 italic">
         <%= plant.botanicalName %>
       </p>
@@ -102,8 +113,10 @@
     <aside class="w-full lg:w-72 space-y-4">
       <% recommendedPlants.forEach(rec=> { %>
         <% if (rec._id.toString() !==plant._id.toString()) { %>
-          <a href="/plants/<%= rec._id %>" class="sidebar-card block bg-white rounded shadow overflow-hidden shadow-md transform transition duration-300 hover:shadow-xl hover:-translate-y-2">
-            <img src="<%= rec.image %>" alt="<%= rec.name %>" class="w-full h-32 object-cover transition-transform duration-300 hover:scale-105">
+          <a href="/plants/<%= rec._id %>"
+            class="sidebar-card block bg-white rounded shadow overflow-hidden shadow-md transform transition duration-300 hover:shadow-xl hover:-translate-y-2">
+            <img src="<%= rec.image %>" alt="<%= rec.name %>"
+              class="w-full h-32 object-cover transition-transform duration-300 hover:scale-105">
             <div class="p-3">
               <h3 class="font-semibold">
                 <%= rec.name %>

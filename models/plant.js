@@ -51,7 +51,12 @@ const plantSchema = new mongoose.Schema({
   },
   image: {
     type: String
-  }
+  },
+  externalLink: {
+  type: String,
+  trim: true
+}
+
 });
 
-module.exports = mongoose.model("Plant", plantSchema);
+module.exports =mongoose.model("Plant", plantSchema);

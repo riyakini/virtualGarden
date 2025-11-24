@@ -136,6 +136,7 @@ app.use('/', plantRoutes);  // or app.use('/plants', plantRoutes);
 app.use("/owners", ownersRoutes);
 
 
+
 // Health check route
 app.get('/health',isLoggedIn,(req,res)=>{
     res.render('health');
@@ -143,6 +144,12 @@ app.get('/health',isLoggedIn,(req,res)=>{
 app.get('/detect',isLoggedIn, (req, res) => res.render('detect'));
 
 app.get('/aloevera', (req, res) => res.render('plants/aloevera'));
+
+app.get("quiz",(req,res)=>{
+    res.render('quiz');
+});
+
+
 // Logout Route
 app.get("/logout", function (req, res) {
   res.cookie("token", "");

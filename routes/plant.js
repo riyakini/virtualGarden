@@ -51,6 +51,7 @@ router.post("/plants/addplant", upload.single("image"), async (req, res) => {
       description,
       medicinal,
       cultivation,
+      externalLink,
       sketchfabEmbedUrl,
     } = req.body;
 
@@ -75,6 +76,7 @@ router.post("/plants/addplant", upload.single("image"), async (req, res) => {
       description,
       medicinal,
       cultivation,
+      externalLink,
       sketchfabEmbedUrl,
       image: req.file ? "/uploads/" + req.file.filename : null,
     });
