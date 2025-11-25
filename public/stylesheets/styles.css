@@ -24,9 +24,16 @@ nav a:hover { color: #2e7d32; }
 
 .login-btn {
   background: #2e7d32; color: #fff; border: none;
-  padding: 10px 18px; border-radius: 5px; cursor: pointer;
+  padding: 8px 22px; border-radius: 5px; cursor: pointer;
   text-decoration: none;
 }
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;   /* text doesn’t break into 2 lines */
+}
+
 .login-btn:hover { background: #1b5e20; }
 
 /* HERO */
@@ -164,4 +171,201 @@ footer { background: #e9f5e9; padding: 40px; margin-top: 40px; .feature-box { ba
   margin: 0;
   color: #6b6b6b;
   font-size: 0.95rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  /* Header: allow wrapping */
+  header {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo,
+  .log {
+    font-size: 24px;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0 0;
+  }
+
+  .login-btn {
+    order: 2;
+  }
+
+  /* Hero spacing */
+  .hero {
+    padding: 40px 20px;
+    gap: 24px;
+  }
+
+  .hero-image img {
+    width: 80%;
+    max-width: 360px;
+  }
+
+  .healing-section,
+  .trusted-section {
+    padding: 40px 20px;
+  }
+
+  footer {
+    padding: 30px 20px;
+  }
+}
+@media (max-width: 768px) {
+  /* Hero stack: image below text */
+  .hero {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    flex: 1 1 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+  }
+
+  .hero p,
+  .hero p1 {
+    font-size: 16px;
+  }
+
+  .feature-row {
+    justify-content: center;
+  }
+
+  /* Plant & healing cards: 2 per row on mid phones */
+  .plant-grid,
+  .healing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  /* Footer columns wrap nicely */
+  .footer-content {
+    gap: 16px;
+  }
+}
+@media (max-width: 480px) {
+  header {
+    padding: 10px 16px;
+  }
+
+  nav {
+    gap: 10px;
+    font-size: 13px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    padding: 30px 16px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .feature-box {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .trusted-section,
+  .healing-section,
+  footer {
+    padding: 24px 16px;
+  }
+
+  /* Cards one per row on very small screens */
+  .plant-grid,
+  .healing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .chat-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+@media (max-width: 992px) {
+  header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .login-btn {
+    order: 2;
+  }
+}
+
+@media (max-width: 900px) {
+  header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* logo + text on left */
+  .logo {
+    font-size: 24px;
+  }
+
+  .log {
+    font-size: 24px;
+    margin-left: 6px;
+    margin-right: auto;   /* pushes Login to the right */
+  }
+
+  /* login on right of first row */
+  .login-btn {
+    order: 2;
+    margin-left: 0;
+  }
+
+  /* nav goes to second row, full width */
+  nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
 }
