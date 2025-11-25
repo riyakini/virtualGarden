@@ -68,7 +68,15 @@
       <h3>Trusted by herbal enthusiasts worldwide</h3>
       <p>✓ 1000+ Plants &nbsp; ✓ Expert Verified &nbsp; ✓ Free Access</p>
     </div>
-    <div class="plant-grid"></div>
+      <div class="plant-grid">
+    <% plants.forEach(plant => { %>
+      <a href="/plants/<%= plant._id %>" class="plant-card">
+        <img src="<%= plant.image %>" alt="<%= plant.name %>">
+        <h3><%= plant.name %></h3>
+        <p><%= plant.type %></p>
+      </a>
+    <% }) %>
+  </div>
   </section>
 
   <!-- Traditional Healing Systems -->
@@ -125,15 +133,15 @@
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Health & Wellness</a></li>
-          <li><a href="#">Plantdetection</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/health">Health & Wellness</a></li>
+          <li><a href="/detect">Plantdetection</a></li>
+          <li><a href="/login">Login</a></li>
         </ul>
       </div>
       <div class="footer-contact">
         <h4>Contact Us</h4>
-        <p>Universal Colege of Engineerng</p><br>Kaman, Vasai 401208</p>
+        <p>Universal Colege of Engineerng</p>Kaman, Vasai 401208</p>
         <p>Email: EcoHerbNet@gmail.com</p>
         <p>Phone: +91-XXXXXXXXXX</p>
       </div>
@@ -158,30 +166,10 @@
 
  
 <script>
-/* Plant Data */
-const plants = [
-  { name: "Tulsi",       type: "Herb",      img: "images/tulsi.jpg",       link: "tulsi.html" },
-  { name: "Aloe Vera",   type: "Succulent", img: "images/aloevera.jpg",    link: "aloevera.html" },
-  { name: "Sage",        type: "Herb",      img: "images/sage1.jpg",       link: "sage.html" },
-  { name: "Ginger",      type: "Root",      img: "images/ginger.jpg",      link: "ginger.html" },
-  { name: "Neem",        type: "Medicinal", img: "images/neem.jpg",        link: "neem.html" },
-  { name: "Ashwagandha", type: "Adaptogen", img: "images/ashwagandha.jpg", link: "ashwagandha.html" },
-  { name: "Eucalyptus",  type: "Adaptogen", img: "images/eucalyptus.jpg",  link: "eucalyptus.html" },
-  { name: "Hibiscus",    type: "Adaptogen", img: "images/hibiscus.jpg",    link: "hibiscus.html" },
-  { name: "Rosemary",    type: "Medicinal", img: "images/rosemary.jpg",    link: "rosemary.html" },
-  { name: "Amla",        type: "Herb",      img: "images/amla.jpg",        link: "amla.html" },
-];
 
-/* Render Plant Grid */
-const grid = document.querySelector('.plant-grid');
 
-grid.innerHTML = plants.map(p => `
-  <a href="${p.link}" class="plant-card">
-    <img src="${p.img}" alt="${p.name}">
-    <h3>${p.name}</h3>
-    <p>${p.type}</p>
-  </a>
-`).join('');
+
+
 
 /* Simple scroll reveal */
 const revealOnScroll = () => {

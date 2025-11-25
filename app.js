@@ -5,6 +5,7 @@ const path=require('path');
 const healthRoutes = require("./routes/health");
 const userModel = require("./models/user");
 
+
 const Plant = require("./models/plant");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -24,8 +25,17 @@ app.use("/api", healthRoutes);
 const connectDb=require('./config/mongoose-connector');
 connectDb();
 
-app.get('/',(req,res)=>{
-    res.render('index');
+app.get('/',async(req,res)=>{
+   try {
+    // Get some plants for the homepage (e.g., latest 8)
+    const plants = await Plant.find().limit(10);
+
+    res.render('index', { plants });   // 👈 send plants to home view
+  } catch (err) {
+    console.error('Error loading homepage plants:', err);
+    res.render('index', { plants: [] }); // fail gracefully
+  }
+    
 });
 
 function isLoggedIn(req, res, next) {
@@ -138,10 +148,10 @@ app.use("/owners", ownersRoutes);
 
 
 // Health check route
-app.get('/health',isLoggedIn,(req,res)=>{
+app.get('/health',(req,res)=>{
     res.render('health');
 });
-app.get('/detect',isLoggedIn, (req, res) => res.render('detect'));
+app.get('/detect', (req, res) => res.render('detect'));
 
 app.get('/aloevera', (req, res) => res.render('plants/aloevera'));
 
